@@ -16,7 +16,7 @@ namespace SignalRServer
             using (WebApp.Start(url))
             {
                 Console.WriteLine("SignalR server listening on {0}.", url);
-                Console.ReadLine();
+                Console.ReadKey();
             }
         }
     }
