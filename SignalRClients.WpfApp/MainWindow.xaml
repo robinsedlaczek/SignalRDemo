@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SignalRClients.WpfApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Width="800" Height="400">
+        Title="MainWindow" Width="910" Height="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -74,12 +74,13 @@
                 <TextBlock Text="Dec"/>
                 <TextBox x:Name="DecTextBox" Width="40" Text="0" TextAlignment="Right"/>
             </StackPanel>
-            
+
+            <Button x:Name="GenerateRandomNumbersButton" Content="Generate Numbers" Width="Auto" Height="30" Padding="5" Margin="5" Click="OnGenerateRandomNumbersButtonClick"/>
             <Button x:Name="SaveButton" Content="Send to Server" Width="Auto" Height="30" Padding="5" Margin="5" Click="OnSaveButtonClick"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock x:Name="AccountId" Text="AccountId" Margin="3" Width="85"/>
+            <TextBlock x:Name="AccountId" Text="AccountId" Margin="3" Width="130"/>
             <TextBlock x:Name="JanListItemTextBlock" Text="Jan" Margin="3" Width="55"/>
             <TextBlock x:Name="FebListItemTextBlock" Text="Feb" Margin="3" Width="55"/>
             <TextBlock x:Name="MarListItemTextBlock" Text="Mar" Margin="3" Width="55"/>
@@ -99,7 +100,7 @@
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch" ShowGridLines="True">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="85"/>
+                            <ColumnDefinition Width="130"/>
                             <ColumnDefinition Width="55"/>
                             <ColumnDefinition Width="55"/>
                             <ColumnDefinition Width="55"/>

@@ -30,10 +30,12 @@ namespace SignalRClients.WpfApp
         private void ConnectToPlanningGridHub()
         {
             _connection = new HubConnection("http://localhost:8082/");
+            _connection.TraceLevel = TraceLevels.All;
+            _connection.TraceWriter = Console.Out;
+
             _proxy = _connection.CreateHubProxy("PlanningGridHub");
 
-            /*await*/
-            _connection.Start();
+            /*await*/ _connection.Start();
 
             _proxy.On<string, decimal[]>("AccountDataChanged", (accountId, values) =>
             {
@@ -106,6 +108,26 @@ namespace SignalRClients.WpfApp
                 NovTextBox.Text = "0";
                 DecTextBox.Text = "0";
             });
+        }
+
+        private void OnGenerateRandomNumbersButtonClick(object sender, RoutedEventArgs e)
+        {
+            var random = new Random();
+
+            AccountIdTextBox.Text = Guid.NewGuid().ToString().Substring(0, 12);
+            JanTextBox.Text = random.Next(2000).ToString();
+            FebTextBox.Text = random.Next(2000).ToString();
+            MarTextBox.Text = random.Next(2000).ToString();
+            AprTextBox.Text = random.Next(2000).ToString();
+            MayTextBox.Text = random.Next(2000).ToString();
+            JunTextBox.Text = random.Next(2000).ToString();
+            JulTextBox.Text = random.Next(2000).ToString();
+            AugTextBox.Text = random.Next(2000).ToString();
+            SepTextBox.Text = random.Next(2000).ToString();
+            OctTextBox.Text = random.Next(2000).ToString();
+            NovTextBox.Text = random.Next(2000).ToString();
+            DecTextBox.Text = random.Next(2000).ToString();
+
         }
     }
 }
