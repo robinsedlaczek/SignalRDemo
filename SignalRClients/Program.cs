@@ -12,7 +12,8 @@ namespace SignalRClients.ConsoleApp
     {
         static void Main(string[] args)
         {
-            SavePlanningData();
+            Console.WriteLine("Call server method 'SavePlanningData'.");
+            SavePlanningData().Wait();
 
             /// For events:
             //var eventName = ;
