@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
-using Microsoft.AspNet.SignalR.Client.Hubs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SignalRClients.ConsoleApp
 {
@@ -12,37 +7,32 @@ namespace SignalRClients.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Call server method 'SavePlanningData'.");
-            SavePlanningData().Wait();
+            Console.WriteLine("********************************************************************");
+            Console.WriteLine("*                                                                  *");
+            Console.WriteLine("*                              CLIENT                              *");
+            Console.WriteLine("*                                                                  *");
+            Console.WriteLine("********************************************************************");
 
-            /// For events:
-            //var eventName = ;
-            //proxy.Subscribe(eventName);
-            //proxy.InvokeEvent(eventName, args);
+            var connection = new HubConnection("http://localhost:8082/");
+            var proxy = connection.CreateHubProxy("SaveAccountData");
 
+            connection.Start();
 
-            //Handle incoming event from server: use Invoke to write to console from SignalR's thread 
-            //HubProxy.On<string, string>("AddMessage", (name, message) => 
-            //    Dispatcher.Invoke(() => 
-            //    {
-            //        RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message)) 
-            //    ));
+            Console.WriteLine("\n\nPress ESC to exit.");
 
-            Console.WriteLine("Press key to exit.");
-            Console.ReadKey();
+            char key = (char) 0;
+
+            while (key != 27)
+            {
+                proxy.On<string, decimal[]>("AccountDataChanged", (accountId, values) =>
+                {
+                    Console.WriteLine("\tAccountId: {0};\n\tValues: {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}",
+                        accountId, values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8], values[9], values[10], values[11]);
+                });
+
+                key = Console.ReadKey().KeyChar;
+            }
         }
 
-        private static async Task SavePlanningData()
-        {
-            var hubConnection = new HubConnection("http://localhost:8080");
-            var hubProxy = hubConnection.CreateHubProxy("PlanningGridHub");
-
-            await hubConnection.Start();
-
-            var accountId = "231245050";
-            var values = new decimal[] { 0.1M, 0.2M, 0.3M, 0.4M, 0.5M, 0.6M, 0.7M, 0.8M, 0.9M, 1.0M, 1.1M, 1.2M };
-
-            await hubProxy.Invoke("SaveAccountData", accountId, values);
-        }
     }
 }

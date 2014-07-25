@@ -1,0 +1,136 @@
+﻿<Window x:Class="SignalRClients.WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Width="800" Height="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Background="LightGray">
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Account-ID"/>
+                <TextBox x:Name="AccountIdTextBox" Width="75" Text="-"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Jan"/>
+                <TextBox x:Name="JanTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Feb"/>
+                <TextBox x:Name="FebTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Mar"/>
+                <TextBox x:Name="MarTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Apr"/>
+                <TextBox x:Name="AprTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="May"/>
+                <TextBox x:Name="MayTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Jun"/>
+                <TextBox x:Name="JunTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Jul"/>
+                <TextBox x:Name="JulTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Aug"/>
+                <TextBox x:Name="AugTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Sep"/>
+                <TextBox x:Name="SepTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Oct"/>
+                <TextBox x:Name="OctTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Nov"/>
+                <TextBox x:Name="NovTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Dec"/>
+                <TextBox x:Name="DecTextBox" Width="40" Text="0" TextAlignment="Right"/>
+            </StackPanel>
+            
+            <Button x:Name="SaveButton" Content="Send to Server" Width="Auto" Height="30" Padding="5" Margin="5" Click="OnSaveButtonClick"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock x:Name="AccountId" Text="AccountId" Margin="3" Width="85"/>
+            <TextBlock x:Name="JanListItemTextBlock" Text="Jan" Margin="3" Width="55"/>
+            <TextBlock x:Name="FebListItemTextBlock" Text="Feb" Margin="3" Width="55"/>
+            <TextBlock x:Name="MarListItemTextBlock" Text="Mar" Margin="3" Width="55"/>
+            <TextBlock x:Name="AprListItemTextBlock" Text="Apr" Margin="3" Width="55"/>
+            <TextBlock x:Name="MayListItemTextBlock" Text="May" Margin="3" Width="55"/>
+            <TextBlock x:Name="JunListItemTextBlock" Text="Jun" Margin="3" Width="55"/>
+            <TextBlock x:Name="JulListItemTextBlock" Text="Jul" Margin="3" Width="55"/>
+            <TextBlock x:Name="AugListItemTextBlock" Text="Aug" Margin="3" Width="55"/>
+            <TextBlock x:Name="SepListItemTextBlock" Text="Sep" Margin="3" Width="55"/>
+            <TextBlock x:Name="OctListItemTextBlock" Text="Oct" Margin="3" Width="55"/>
+            <TextBlock x:Name="NovListItemTextBlock" Text="Nov" Margin="3" Width="55"/>
+            <TextBlock x:Name="DecListItemTextBlock" Text="Dec" Margin="3" Width="55"/>
+        </StackPanel>
+        
+        <ListView x:Name="AccountDataListView" Grid.Row="2" ItemsSource="{Binding AccountDataRows}" Margin="0" Padding="3">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch" ShowGridLines="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="55"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="AccountId" Text="{Binding AccountId}" Margin="3" Grid.Column="0"/>
+                        <TextBlock x:Name="JanListItemTextBlock" Text="{Binding Jan}" Margin="3" Grid.Column="1"/>
+                        <TextBlock x:Name="FebListItemTextBlock" Text="{Binding Feb}" Margin="3" Grid.Column="2"/>
+                        <TextBlock x:Name="MarListItemTextBlock" Text="{Binding Mar}" Margin="3" Grid.Column="3"/>
+                        <TextBlock x:Name="AprListItemTextBlock" Text="{Binding Apr}" Margin="3" Grid.Column="4"/>
+                        <TextBlock x:Name="MayListItemTextBlock" Text="{Binding May}" Margin="3" Grid.Column="5"/>
+                        <TextBlock x:Name="JunListItemTextBlock" Text="{Binding Jun}" Margin="3" Grid.Column="6"/>
+                        <TextBlock x:Name="JulListItemTextBlock" Text="{Binding Jul}" Margin="3" Grid.Column="7"/>
+                        <TextBlock x:Name="AugListItemTextBlock" Text="{Binding Aug}" Margin="3" Grid.Column="8"/>
+                        <TextBlock x:Name="SepListItemTextBlock" Text="{Binding Sep}" Margin="3" Grid.Column="9"/>
+                        <TextBlock x:Name="OctListItemTextBlock" Text="{Binding Oct}" Margin="3" Grid.Column="10"/>
+                        <TextBlock x:Name="NovListItemTextBlock" Text="{Binding Nov}" Margin="3" Grid.Column="11"/>
+                        <TextBlock x:Name="DecListItemTextBlock" Text="{Binding Dec}" Margin="3" Grid.Column="12"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Window>
