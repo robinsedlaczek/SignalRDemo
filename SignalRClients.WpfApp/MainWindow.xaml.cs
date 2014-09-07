@@ -60,7 +60,7 @@ namespace SignalRClients.WpfApp
             decimal[] values;
             var accountId = ReadValuesFromInputFields(out values);
 
-            await _proxy.Invoke("SaveAccountData", accountId, values);
+            bool success = await _proxy.Invoke<bool>("SaveAccountData", accountId, values);
 
             ClearInputFields();
         }
