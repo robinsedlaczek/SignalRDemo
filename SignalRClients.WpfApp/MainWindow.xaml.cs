@@ -35,7 +35,7 @@ namespace SignalRClients.WpfApp
 
             _proxy = _connection.CreateHubProxy("PlanningGridHub");
 
-            /*await*/ _connection.Start();
+            /*await*/ _connection.Start().Wait();
 
             _proxy.On<string, decimal[]>("AccountDataChanged", (accountId, values) =>
             {
@@ -60,7 +60,7 @@ namespace SignalRClients.WpfApp
             decimal[] values;
             var accountId = ReadValuesFromInputFields(out values);
 
-            await _proxy.Invoke("SaveAccountData", accountId, values);
+            bool success = await _proxy.Invoke<bool>("SaveAccountData", accountId, values);
 
             ClearInputFields();
         }

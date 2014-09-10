@@ -14,10 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRClients.WpfApp", "Si
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRServer", "SignalRServer\SignalRServer.csproj", "{F2FA1325-38C9-4E60-810B-88894D61DA35}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{80B238F9-A523-406E-8B7E-5317385E66C2}"
-	ProjectSection(SolutionItems) = preProject
-		Shared\IPlanningGridClient.cs = Shared\IPlanningGridClient.cs
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{A8107D74-C749-4A20-80F9-21095BA70B65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +30,10 @@ Global
 		{F2FA1325-38C9-4E60-810B-88894D61DA35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2FA1325-38C9-4E60-810B-88894D61DA35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2FA1325-38C9-4E60-810B-88894D61DA35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8107D74-C749-4A20-80F9-21095BA70B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8107D74-C749-4A20-80F9-21095BA70B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8107D74-C749-4A20-80F9-21095BA70B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8107D74-C749-4A20-80F9-21095BA70B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
