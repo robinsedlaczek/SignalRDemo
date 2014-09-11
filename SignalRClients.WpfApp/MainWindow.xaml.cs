@@ -27,16 +27,24 @@ namespace SignalRClients.WpfApp
             ConnectToPlanningGridHub();
         }
 
+        /// <summary>
+        /// This method creates the connection and the proxy used to call SignalR methods at the server.
+        /// </summary>
         private void ConnectToPlanningGridHub()
         {
+            // First create the connection to the server (that is hosted at localhost).
             _connection = new HubConnection("http://localhost:8082/");
             _connection.TraceLevel = TraceLevels.All;
             _connection.TraceWriter = Console.Out;
 
+            // Then create the proxy that uses the underlying connection to communicate with the given hub.
             _proxy = _connection.CreateHubProxy("PlanningGridHub");
 
+            // The connection to SignalR server has to be started.
             /*await*/ _connection.Start().Wait();
 
+            // Add a delegate to the proxy that is executed when the AccountDataChanged method has been called by the server.
+            // Compare the signature with the method defined in the IPlanningGridClient interface.
             _proxy.On<string, decimal[]>("AccountDataChanged", (accountId, values) =>
             {
                 var row = new AccountData()
@@ -50,19 +58,24 @@ namespace SignalRClients.WpfApp
             });
         }
 
-        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
-        {
-            Task.Factory.StartNew(() => SaveValuesToServer());
-        }
-
+        /// <summary>
+        /// This method calls a method at the server.
+        /// </summary>
+        /// <returns></returns>
         private async Task SaveValuesToServer()
         {
             decimal[] values;
             var accountId = ReadValuesFromInputFields(out values);
 
+            // Invoke the server method.
             bool success = await _proxy.Invoke<bool>("SaveAccountData", accountId, values);
 
             ClearInputFields();
+        }
+
+        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            Task.Factory.StartNew(() => SaveValuesToServer());
         }
 
         private string ReadValuesFromInputFields(out decimal[] values)
